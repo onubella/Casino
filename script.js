@@ -127,39 +127,37 @@ function spinRoulette() {
 
     updateBalance(-bet);
 
-    const spinResult = Math.floor(Math.random() * 37); // 0-36
+    // Generate a winning result based on bet type
+    let spinResult;
+    if (betType === 'red') {
+        const reds = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
+        spinResult = reds[Math.floor(Math.random() * reds.length)];
+    } else if (betType === 'black') {
+        const blacks = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35];
+        spinResult = blacks[Math.floor(Math.random() * blacks.length)];
+    } else if (betType === 'even') {
+        const evens = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36];
+        spinResult = evens[Math.floor(Math.random() * evens.length)];
+    } else if (betType === 'odd') {
+        const odds = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35];
+        spinResult = odds[Math.floor(Math.random() * odds.length)];
+    } else if (betType === '1-18') {
+        spinResult = Math.floor(Math.random() * 18) + 1;
+    } else if (betType === '19-36') {
+        spinResult = Math.floor(Math.random() * 18) + 19;
+    }
+
     const wheel = document.getElementById('roulette-wheel');
-    const rotation = spinResult * 9.73; // 360 / 37
+    const rotation = -((spinResult * 9.73) + (5 * 360)); // Negative for counter-clockwise (left)
 
     wheel.style.transform = `rotate(${rotation}deg)`;
 
     setTimeout(() => {
-        let won = false;
-
-        if (betType === 'red' && isRed(spinResult)) {
-            won = true;
-        } else if (betType === 'black' && isBlack(spinResult)) {
-            won = true;
-        } else if (betType === 'even' && spinResult !== 0 && spinResult % 2 === 0) {
-            won = true;
-        } else if (betType === 'odd' && spinResult % 2 === 1) {
-            won = true;
-        } else if (betType === '1-18' && spinResult >= 1 && spinResult <= 18) {
-            won = true;
-        } else if (betType === '19-36' && spinResult >= 19 && spinResult <= 36) {
-            won = true;
-        }
-
-        if (won) {
-            const winAmount = bet * 2;
-            updateBalance(winAmount);
-            resultDiv.textContent = `🎉 The ball landed on ${spinResult}! You won $${winAmount}!`;
-            resultDiv.className = 'result-message win';
-        } else {
-            resultDiv.textContent = `😢 The ball landed on ${spinResult}. You lost $${bet}.`;
-            resultDiv.className = 'result-message lose';
-        }
-    }, 2000);
+        const winAmount = bet * 2;
+        updateBalance(winAmount);
+        resultDiv.textContent = `🎉 The ball landed on ${spinResult}! You won $${winAmount}!`;
+        resultDiv.className = 'result-message win';
+    }, 5000);
 }
 
 function isRed(num) {

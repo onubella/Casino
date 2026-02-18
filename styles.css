@@ -185,34 +185,95 @@ body {
 }
 
 .roulette-wheel::after {
-    display: none;
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 200px;
+    background: black;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    z-index: 5;
 }
 
 .roulette-wheel {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     background: conic-gradient(
         from 0deg,
-        red 0deg 18.4deg,
-        black 18.4deg 36.8deg,
-        red 36.8deg 55.2deg,
-        black 55.2deg 73.6deg,
-        red 73.6deg 92deg,
-        black 92deg 110.4deg,
-        red 110.4deg 128.8deg,
-        black 128.8deg 147.2deg,
-        red 147.2deg 165.6deg,
-        black 165.6deg 184deg,
-        red 184deg 202.4deg,
-        black 202.4deg 220.8deg,
-        red 220.8deg 239.2deg,
-        black 239.2deg 257.6deg,
-        red 257.6deg 276deg,
-        black 276deg 294.4deg,
-        red 294.4deg 312.8deg,
-        black 312.8deg 331.2deg,
-        red 331.2deg 349.6deg,
-        black 349.6deg 360deg
+        red 0deg 9.73deg,
+        #cc0000 9.73deg 9.8deg,
+        black 9.8deg 19.46deg,
+        #1a1a1a 19.46deg 19.53deg,
+        red 19.53deg 29.19deg,
+        #cc0000 29.19deg 29.26deg,
+        black 29.26deg 38.99deg,
+        #1a1a1a 38.99deg 39.06deg,
+        red 39.06deg 48.79deg,
+        #cc0000 48.79deg 48.86deg,
+        black 48.86deg 58.59deg,
+        #1a1a1a 58.59deg 58.66deg,
+        red 58.66deg 68.39deg,
+        #cc0000 68.39deg 68.46deg,
+        black 68.46deg 78.19deg,
+        #1a1a1a 78.19deg 78.26deg,
+        red 78.26deg 87.99deg,
+        #cc0000 87.99deg 88.06deg,
+        black 88.06deg 97.79deg,
+        #1a1a1a 97.79deg 97.86deg,
+        red 97.86deg 107.59deg,
+        #cc0000 107.59deg 107.66deg,
+        black 107.66deg 117.39deg,
+        #1a1a1a 117.39deg 117.46deg,
+        red 117.46deg 127.19deg,
+        #cc0000 127.19deg 127.26deg,
+        black 127.26deg 136.99deg,
+        #1a1a1a 136.99deg 137.06deg,
+        red 137.06deg 146.79deg,
+        #cc0000 146.79deg 146.86deg,
+        black 146.86deg 156.59deg,
+        #1a1a1a 156.59deg 156.66deg,
+        red 156.66deg 166.39deg,
+        #cc0000 166.39deg 166.46deg,
+        black 166.46deg 176.19deg,
+        #1a1a1a 176.19deg 176.26deg,
+        red 176.26deg 185.99deg,
+        #cc0000 185.99deg 186.06deg,
+        black 186.06deg 195.79deg,
+        #1a1a1a 195.79deg 195.86deg,
+        red 195.86deg 205.59deg,
+        #cc0000 205.59deg 205.66deg,
+        black 205.66deg 215.39deg,
+        #1a1a1a 215.39deg 215.46deg,
+        red 215.46deg 225.19deg,
+        #cc0000 225.19deg 225.26deg,
+        black 225.26deg 234.99deg,
+        #1a1a1a 234.99deg 235.06deg,
+        red 235.06deg 244.79deg,
+        #cc0000 244.79deg 244.86deg,
+        black 244.86deg 254.59deg,
+        #1a1a1a 254.59deg 254.66deg,
+        red 254.66deg 264.39deg,
+        #cc0000 264.39deg 264.46deg,
+        black 264.46deg 274.19deg,
+        #1a1a1a 274.19deg 274.26deg,
+        red 274.26deg 283.99deg,
+        #cc0000 283.99deg 284.06deg,
+        black 284.06deg 293.79deg,
+        #1a1a1a 293.79deg 293.86deg,
+        red 293.86deg 303.59deg,
+        #cc0000 303.59deg 303.66deg,
+        black 303.66deg 313.39deg,
+        #1a1a1a 313.39deg 313.46deg,
+        red 313.46deg 323.19deg,
+        #cc0000 323.19deg 323.26deg,
+        black 323.26deg 332.99deg,
+        #1a1a1a 332.99deg 333.06deg,
+        red 333.06deg 342.79deg,
+        #cc0000 342.79deg 342.86deg,
+        black 342.86deg 352.59deg,
+        #1a1a1a 352.59deg 352.66deg,
+        red 352.66deg 360deg
     );
     border-radius: 50%;
     border: 8px solid #333;
@@ -221,7 +282,7 @@ body {
     justify-content: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     position: relative;
-    transition: transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .wheel-numbers-ring {
@@ -244,7 +305,7 @@ body {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%) rotate(calc(var(--i) * 10deg)) translateY(-140px);
+    transform: translate(-50%, -50%) rotate(calc(var(--i) * 9.73deg + 4.865deg)) translateY(-185px);
 }
 
 .roulette-pin {
