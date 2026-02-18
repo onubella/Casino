@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gambling Games</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎰 Casino Games</h1>
+            <div class="balance">
+                <h2>Balance: $<span id="balance">1000</span></h2>
+                <button class="reset-btn" onclick="resetBalance()">Reset Balance</button>
+            </div>
+        </div>
+
+        <div class="game-selector">
+            <button class="tab-btn active" onclick="switchGame('slot')">Slot Machine</button>
+            <button class="tab-btn" onclick="switchGame('roulette')">Roulette</button>
+            <button class="tab-btn" onclick="switchGame('poker')">Poker</button>
+        </div>
+
+        <!-- SLOT MACHINE -->
+        <div id="slot-game" class="game-content active">
+            <h2>🎰 Slot Machine</h2>
+            <div class="slot-machine">
+                <div class="reel" id="reel1">🍎</div>
+                <div class="reel" id="reel2">🍎</div>
+                <div class="reel" id="reel3">🍎</div>
+            </div>
+            <div class="slot-controls">
+                <input type="number" id="slot-bet" placeholder="Enter bet" min="1" max="1000" value="10">
+                <button onclick="spinSlot()" class="play-btn">SPIN</button>
+            </div>
+            <div id="slot-result" class="result-message"></div>
+        </div>
+
+        <!-- ROULETTE -->
+        <div id="roulette-game" class="game-content">
+            <h2>🎡 Roulette</h2>
+            <div class="roulette-container">
+                <div class="roulette-wheel" id="roulette-wheel">
+                    <div class="wheel-number">0</div>
+                    <div class="wheel-numbers-ring">
+                        <div class="wheel-num" style="--i: 0;">0</div>
+                        <div class="wheel-num" style="--i: 1;">1</div>
+                        <div class="wheel-num" style="--i: 2;">2</div>
+                        <div class="wheel-num" style="--i: 3;">3</div>
+                        <div class="wheel-num" style="--i: 4;">4</div>
+                        <div class="wheel-num" style="--i: 5;">5</div>
+                        <div class="wheel-num" style="--i: 6;">6</div>
+                        <div class="wheel-num" style="--i: 7;">7</div>
+                        <div class="wheel-num" style="--i: 8;">8</div>
+                        <div class="wheel-num" style="--i: 9;">9</div>
+                        <div class="wheel-num" style="--i: 10;">10</div>
+                        <div class="wheel-num" style="--i: 11;">11</div>
+                        <div class="wheel-num" style="--i: 12;">12</div>
+                        <div class="wheel-num" style="--i: 13;">13</div>
+                        <div class="wheel-num" style="--i: 14;">14</div>
+                        <div class="wheel-num" style="--i: 15;">15</div>
+                        <div class="wheel-num" style="--i: 16;">16</div>
+                        <div class="wheel-num" style="--i: 17;">17</div>
+                        <div class="wheel-num" style="--i: 18;">18</div>
+                        <div class="wheel-num" style="--i: 19;">19</div>
+                        <div class="wheel-num" style="--i: 20;">20</div>
+                        <div class="wheel-num" style="--i: 21;">21</div>
+                        <div class="wheel-num" style="--i: 22;">22</div>
+                        <div class="wheel-num" style="--i: 23;">23</div>
+                        <div class="wheel-num" style="--i: 24;">24</div>
+                        <div class="wheel-num" style="--i: 25;">25</div>
+                        <div class="wheel-num" style="--i: 26;">26</div>
+                        <div class="wheel-num" style="--i: 27;">27</div>
+                        <div class="wheel-num" style="--i: 28;">28</div>
+                        <div class="wheel-num" style="--i: 29;">29</div>
+                        <div class="wheel-num" style="--i: 30;">30</div>
+                        <div class="wheel-num" style="--i: 31;">31</div>
+                        <div class="wheel-num" style="--i: 32;">32</div>
+                        <div class="wheel-num" style="--i: 33;">33</div>
+                        <div class="wheel-num" style="--i: 34;">34</div>
+                        <div class="wheel-num" style="--i: 35;">35</div>
+                        <div class="wheel-num" style="--i: 36;">36</div>
+                    </div>
+                </div>
+            </div>
+            <div class="roulette-controls">
+                <div class="bet-section">
+                    <label>Bet Type:</label>
+                    <select id="bet-type">
+                        <option value="red">Red</option>
+                        <option value="black">Black</option>
+                        <option value="even">Even</option>
+                        <option value="odd">Odd</option>
+                        <option value="1-18">1-18</option>
+                        <option value="19-36">19-36</option>
+                    </select>
+                </div>
+                <div class="bet-section">
+                    <input type="number" id="roulette-bet" placeholder="Enter bet" min="1" max="1000" value="10">
+                    <button onclick="spinRoulette()" class="play-btn">SPIN</button>
+                </div>
+            </div>
+            <div id="roulette-result" class="result-message"></div>
+        </div>
+
+        <!-- POKER -->
+        <div id="poker-game" class="game-content">
+            <h2>♠️ Three Card Poker</h2>
+            <div class="poker-container">
+                <div class="poker-section">
+                    <h3>Your Hand</h3>
+                    <div class="poker-hand" id="poker-hand"></div>
+                </div>
+                <div class="poker-section">
+                    <h3>Dealer Hand</h3>
+                    <div class="poker-hand" id="dealer-hand"></div>
+                </div>
+            </div>
+            <div class="poker-controls">
+                <input type="number" id="poker-bet" placeholder="Enter bet" min="1" max="1000" value="10">
+                <button onclick="dealPokerHand()" class="play-btn" id="deal-btn">DEAL</button>
+            </div>
+            <div id="poker-result" class="result-message"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
