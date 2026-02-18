@@ -19,7 +19,6 @@
         <div class="game-selector">
             <button class="tab-btn active" onclick="switchGame('slot')">Slot Machine</button>
             <button class="tab-btn" onclick="switchGame('roulette')">Roulette</button>
-            <button class="tab-btn" onclick="switchGame('poker')">Poker</button>
         </div>
 
         <!-- SLOT MACHINE -->
@@ -103,26 +102,6 @@
                 </div>
             </div>
             <div id="roulette-result" class="result-message"></div>
-        </div>
-
-        <!-- POKER -->
-        <div id="poker-game" class="game-content">
-            <h2>♠️ Three Card Poker</h2>
-            <div class="poker-container">
-                <div class="poker-section">
-                    <h3>Your Hand</h3>
-                    <div class="poker-hand" id="poker-hand"></div>
-                </div>
-                <div class="poker-section">
-                    <h3>Dealer Hand</h3>
-                    <div class="poker-hand" id="dealer-hand"></div>
-                </div>
-            </div>
-            <div class="poker-controls">
-                <input type="number" id="poker-bet" placeholder="Enter bet" min="1" max="1000" value="10">
-                <button onclick="dealPokerHand()" class="play-btn" id="deal-btn">DEAL</button>
-            </div>
-            <div id="poker-result" class="result-message"></div>
         </div>
     </div>
 
